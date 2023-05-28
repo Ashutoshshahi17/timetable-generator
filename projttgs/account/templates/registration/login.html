@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}TTGS | Login{% endblock %}
+
+{% block content %}
+  <h1 Style="color:#6060cc;"><b>LOGIN PAGE</b></h1>
+  {% if form.errors %}
+    <p style = "color:#6060cc;" >
+      Your username and password didn't match.
+      Please try again.
+    </p>
+  {% else %}
+    <p style = "color:#6060cc;"  >Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}"><b>register here</b></a></p>
+  {% endif %}
+  <div   class="login-form">
+    <form action="{% url 'login' %}" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p><input style = "background-color:#6060cc;"  type="submit" value="LOGIN"></p>
+    </form>
+    <p><a style = "color:#6060cc;"  href="{% url 'password_reset' %}">Forgot your password?</a></p>
+  </div>
+
+
+
+{% endblock %}

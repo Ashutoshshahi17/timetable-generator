@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}TTGS | Register{% endblock %}
+
+{% block content %}
+  <h1 Style="color:#6060cc;"><b>NEW USER/Create an account</b> </h1>
+  <p><a href="{% url 'login' %}">Already have an account?</a></p>
+  <form method="post">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <p><input Style="background-color:#6060cc;" type="submit" value="Create my account"></p>
+  </form>
+{% endblock %}
